@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelGrid.web | Diseño y Desarrollo Web Profesional</title>
+
+    <meta name="description" content="Diseño y desarrollo web profesional de alto impacto. Landing pages, sitios corporativos y aplicaciones web a medida.">
+    <meta property="og:title" content="PixelGrid.web | Desarrollo Web Premium">
+    <meta property="og:description" content="Diseño moderno, código limpio y rendimiento óptimo para escalar tu presencia en línea.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <style>
+        :root {
+            --bg-main: #0a0b10;
+            --bg-card: #12151e;
+            --bg-card-hover: #181d2a;
+            --accent-purple: #7000ff;
+            --accent-cyan: #00f0ff;
+            --text-main: #f0f2f5;
+            --text-muted: #8c96a8;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #hero, #servicios, #portafolio, #info, #testimonios, #faq, #nosotros {
+            scroll-margin-top: 90px;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background: rgba(10, 11, 16, 0.92);
+            backdrop-filter: blur(14px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            z-index: 101;
+        }
+
+        .logo span {
+            color: var(--accent-cyan);
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-center a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-center a:hover,
+        .nav-center a.active {
+            color: var(--accent-cyan);
+        }
+
+        .nav-center a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        /* SELECTOR DE IDIOMA */
+        .custom-lang-dropdown {
+            position: relative;
+            user-select: none;
+        }
+
+        .lang-dropdown-trigger {
+            background: rgba(18, 21, 30, 0.85);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.55rem 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .lang-dropdown-trigger:hover,
+        .custom-lang-dropdown.open .lang-dropdown-trigger {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+        }
+
+        .lang-dropdown-trigger .arrow-icon {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        .custom-lang-dropdown.open .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        .lang-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            width: 160px;
+            background: rgba(18, 21, 30, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            border-radius: 14px;
+            padding: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.25s ease;
+            z-index: 200;
+        }
+
+        .custom-lang-dropdown.open .lang-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.65rem 0.85rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .lang-option-left {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+        }
+
+        .lang-option.active {
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.1);
+            font-weight: 600;
+        }
+
+        .lang-option .check-icon {
+            font-size: 0.75rem;
+            opacity: 0;
+            color: var(--accent-cyan);
+        }
+
+        .lang-option.active .check-icon {
+            opacity: 1;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 9rem 2rem 5rem;
+            position: relative;
+            background: radial-gradient(circle at 50% 30%, rgba(112, 0, 255, 0.12), transparent 70%);
+        }
+
+        .hero-badge {
+            background: rgba(112, 0, 255, 0.15);
+            border: 1px solid var(--accent-purple);
+            color: var(--accent-cyan);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            opacity: 0;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: #050508;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- SECTION HEADERS --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.6rem;
+            background: linear-gradient(90deg, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* --- PRICING & PRODUCTS SECTION --- */
+        .pricing {
+            padding: 6rem 8%;
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+            opacity: 0;
+        }
+
+        .card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-6px);
+            background: var(--bg-card-hover);
+        }
+
+        .card.featured {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 35px rgba(112, 0, 255, 0.25);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -14px;
+            right: 24px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .price {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 1rem 0 0.2rem;
+        }
+
+        .price span {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .deposit-info {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .price-conversions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.6rem 0.9rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .price-conversion-item {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .price-conversion-item strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .btn-pay-main {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: #050508;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-pay-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        /* --- DETAILED PRODUCT DESCRIPTION SECTION --- */
+        .service-details-section {
+            padding: 5rem 8%;
+            background: rgba(18, 21, 30, 0.4);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .detail-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .detail-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.08);
+        }
+
+        .detail-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-cyan);
+            padding: 0.35rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .detail-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .detail-card p {
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .delivery-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .features-list li i {
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+        }
+
+        /* --- PORTFOLIO SECTION --- */
+        .portfolio-section {
+            padding: 6rem 8%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+        }
+
+        .portfolio-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .portfolio-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* --- TESTIMONIALS SECTION --- */
+        .testimonials-section {
+            padding: 6rem 8%;
+            background: rgba(18, 21, 30, 0.3);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stars {
+            color: #facc15;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .author-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--accent-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .author-info h4 {
+            font-size: 0.95rem;
+        }
+
+        .author-info span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- FAQ SECTION --- */
+        .faq-section {
+            padding: 6rem 8%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.3rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            color: var(--accent-cyan);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active {
+            border-color: var(--accent-purple);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 1.3rem;
+        }
+
+        /* --- INFO / METHODOLOGY SECTION --- */
+        .info-section {
+            padding: 6rem 8%;
+            border-top: 1px solid var(--border-color);
+            background: rgba(10, 11, 16, 0.6);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: var(--accent-purple);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(112, 0, 255, 0.15);
+            border: 1px solid var(--accent-purple);
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        /* WORKFLOW STEPS */
+        .workflow-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+        }
+
+        .workflow-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 1.8rem;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .step-item {
+            position: relative;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .step-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-item h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .step-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* --- ABOUT & CONTACT SECTION --- */
+        .about-contact {
+            padding: 6rem 8%;
+            border-top: 1px solid var(--border-color);
+            background: radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.08), transparent 60%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.4rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .contact-badge-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        .contact-badge-item i {
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+        }
+
+        .contact-form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-form-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(10, 11, 16, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-cyan);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.92;
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 8% 2rem;
+            background: #06070a;
+            text-align: center;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        /* --- MODAL ESTILO CHECKOUT --- */
+        .checkout-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .checkout-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .checkout-container {
+            width: 90%;
+            max-width: 920px;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            color: #1a1a1a;
+        }
+
+        .checkout-modal-overlay.active .checkout-container {
+            transform: scale(1);
+        }
+
+        .close-checkout {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: #6b7280;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .close-checkout:hover {
+            color: #111827;
+        }
+
+        .checkout-summary {
+            background: #0d0e12;
+            color: #ffffff;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .summary-header .back-btn {
+            color: #9ca3af;
+            font-size: 0.8rem;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .summary-header h4 {
+            color: #9ca3af;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .summary-header .summary-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .item-details-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .item-title {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: #ffffff;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .summary-totals {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            color: #9ca3af;
+            margin-bottom: 0.6rem;
+        }
+
+        .summary-row.total {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-top: 0.8rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.15);
+            padding-top: 0.8rem;
+        }
+
+        .checkout-form-side {
+            padding: 2.5rem;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .express-pay {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .btn-express {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-express:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-mercadopago {
+            background: #009ee3;
+            color: #ffffff;
+        }
+
+        .btn-paypal {
+            background: #003087;
+            color: #ffffff;
+        }
+
+        .checkout-field {
+            margin-bottom: 1rem;
+        }
+
+        .checkout-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.35rem;
+        }
+
+        .checkout-input {
+            width: 100%;
+            padding: 0.65rem 0.85rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .checkout-input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        .btn-subscribe {
+            width: 100%;
+            background: #25d366;
+            color: #ffffff;
+            border: none;
+            padding: 0.85rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin-top: 0.8rem;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-subscribe:hover {
+            background: #1ebc57;
+        }
+
+        .checkout-disclaimer {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 0.8rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 5%;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-center {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 11, 16, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-center.active {
+                left: 0;
+            }
+
+            .nav-center a {
+                font-size: 1.25rem;
+            }
+
+            .pricing, .service-details-section, .portfolio-section, .testimonials-section, .faq-section, .info-section, .about-contact {
+                padding: 4rem 5%;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .card {
+                padding: 2rem 1.5rem;
+            }
+
+            .checkout-container {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .checkout-summary, .checkout-form-side {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#hero" class="logo">PixelGrid<span>.web</span></a>
+        
+        <nav class="nav-center" id="navCenter">
+            <a href="#hero" id="navHome" class="active">Inicio</a>
+            <a href="#servicios" id="navServices">Servicios</a>
+            <a href="#portafolio" id="navPortfolio">Portafolio</a>
+            <a href="#testimonios" id="navTestimonials">Testimonios</a>
+            <a href="#faq" id="navFaq">FAQ</a>
+            <a href="#nosotros" id="navAbout">Nosotros</a>
+        </nav>
+
+        <div class="nav-right">
+            <div class="custom-lang-dropdown" id="customLangDropdown">
+                <button class="lang-dropdown-trigger" onclick="toggleLangDropdown(event)" aria-label="Seleccionar idioma">
+                    <span id="currentFlag">🇪🇸</span>
+                    <span id="currentLangText">ES</span>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </button>
+                <div class="lang-dropdown-menu" id="langDropdownMenu">
+                    <div class="lang-option active" data-lang="es" onclick="selectLanguage('es', '🇪🇸', 'ES')">
+                        <div class="lang-option-left"><span>🇪🇸</span> <span>Español</span></div>
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </div>
+                    <div class="lang-option" data-lang="en" onclick="selectLanguage('en', '🇺🇸', 'EN')">
+                        <div class="lang-option-left"><span>🇺🇸</span> <span>English</span></div>
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </div>
+                    <div class="lang-option" data-lang="pt" onclick="selectLanguage('pt', '🇧🇷', 'PT')">
+                        <div class="lang-option-left"><span>🇧🇷</span> <span>Português</span></div>
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir Menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-badge" id="heroBadge">
+            <i class="fa-solid fa-bolt"></i> <span id="badgeText">Agencia de Desarrollo Web Premium</span>
+        </div>
+        <h1 id="heroTitle">Convertimos tus ideas en <span>Experiencias Digitales</span> de Alto Impacto</h1>
+        <p id="heroDesc">Diseñamos sitios web modernos, veloces y optimizados para convertir visitantes en clientes reales. Código limpio, interfaces increíbles y soporte garantizado.</p>
+        <div class="hero-actions" id="heroActions">
+            <a href="#servicios" class="btn-cta" id="btnExplore">Explorar Servicios</a>
+            <a href="#portafolio" class="btn-secondary" id="btnPortfolio">Ver Trabajos</a>
+        </div>
+    </section>
+
+    <section class="pricing" id="servicios">
+        <div class="section-title">
+            <h2 id="servicesTitle">Nuestros Servicios Web</h2>
+            <p id="servicesSub">Soluciones a la medida de tu negocio con calidad garantizada</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <h3 id="p1Title">Básico / Landing Page</h3>
+                        <div class="price">$50 USD <span id="p1Time">/ total</span></div>
+                        <div class="deposit-info">Seña inicial (50%): $25 USD</div>
+                        <div class="price-conversions">
+                            <div class="price-conversion-item">🇦🇷 Seña: <strong>~$37.250 ARS</strong></div>
+                            <div class="price-conversion-item">🇧🇷 Seña: <strong>~R$ 127 BRL</strong></div>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> <span id="p1f1">1 Página Completa (Landing Page)</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p1f2">Diseño Adaptable (Mobile, Tablet & PC)</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p1f3">Botón directo a WhatsApp</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p1f4">Formulario de Contacto</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p1f5">Entrega rápida (3 a 5 días)</span></li>
+                    </ul>
+                </div>
+                <button class="btn-pay-main" onclick="openCheckout('Básico / Landing Page', 50)">
+                    <i class="fa-solid fa-bolt"></i> Contratar Servicio
+                </button>
+            </div>
+
+            <div class="card featured">
+                <div class="featured-badge">Más Popular</div>
+                <div>
+                    <div class="card-header">
+                        <h3 id="p2Title">Estándar / Web Corporativa</h3>
+                        <div class="price">$80 USD <span id="p2Time">/ total</span></div>
+                        <div class="deposit-info">Seña inicial (50%): $40 USD</div>
+                        <div class="price-conversions">
+                            <div class="price-conversion-item">🇦🇷 Seña: <strong>~$59.600 ARS</strong></div>
+                            <div class="price-conversion-item">🇧🇷 Seña: <strong>~R$ 204 BRL</strong></div>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> <span id="p2f1">Hasta 5 Páginas / Secciones</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p2f2">Diseño UI/UX Personalizado Premium</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p2f3">Optimización SEO Básica</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p2f4">Integración de Redes Sociales</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p2f5">Animaciones e Interactividad</span></li>
+                    </ul>
+                </div>
+                <button class="btn-pay-main" onclick="openCheckout('Estándar / Web Corporativa', 80)">
+                    <i class="fa-solid fa-bolt"></i> Contratar Servicio
+                </button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <h3 id="p3Title">Web a Medida / App</h3>
+                        <div class="price">$120 USD <span id="p3Time">/ total</span></div>
+                        <div class="deposit-info">Seña inicial (50%): $60 USD</div>
+                        <div class="price-conversions">
+                            <div class="price-conversion-item">🇦🇷 Seña: <strong>~$89.400 ARS</strong></div>
+                            <div class="price-conversion-item">🇧🇷 Seña: <strong>~R$ 306 BRL</strong></div>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> <span id="p3f1">Desarrollo Web o App 100% Personalizado</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p3f2">Integración de Pasarelas de Pago / APIs</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p3f3">Panel de Administración / Base de Datos</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p3f4">Soporte Técnico & Mantenimiento Prioritario</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span id="p3f5">Rendimiento y Seguridad Avanzada</span></li>
+                    </ul>
+                </div>
+                <button class="btn-pay-main" onclick="openCheckout('Web a Medida / App', 120)">
+                    <i class="fa-solid fa-bolt"></i> Contratar Servicio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-details-section">
+        <div class="section-title">
+            <h2 id="detailsTitle">Detalles del Servicio</h2>
+            <p id="detailsSub">Descubre qué incluye exactamente cada uno de nuestros paquetes</p>
+        </div>
+
+        <div class="details-grid">
+            <div class="detail-card">
+                <div>
+                    <div class="detail-badge"><i class="fa-solid fa-rocket"></i> <span id="d1Badge">Landing Page</span></div>
+                    <h3 id="d1Title">Página Única de Alta Conversión</h3>
+                    <p id="d1Desc">Ideal para lanzamientos, campañas publicitarias o negocios que necesitan mostrar su propuesta de valor de forma rápida y concisa.</p>
+                </div>
+                <div class="delivery-tag">
+                    <i class="fa-regular fa-clock"></i> <span id="d1Time">Entrega: 5 - 12 Días Hábiles</span>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div>
+                    <div class="detail-badge"><i class="fa-solid fa-briefcase"></i> <span id="d2Badge">Sitio Corporativo</span></div>
+                    <h3 id="d2Title">Presencia Empresarial Completa</h3>
+                    <p id="d2Desc">Diseñado para PYMEs y profesionales que buscan consolidar su marca con múltiples secciones (Inicio, Nosotros, Servicios, Galería y Contacto).</p>
+                </div>
+                <div class="delivery-tag">
+                    <i class="fa-regular fa-clock"></i> <span id="d2Time">Entrega: 10 - 15 Días Hábiles</span>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div>
+                    <div class="detail-badge"><i class="fa-solid fa-code"></i> <span id="d3Badge">Desarrollo Avanzado</span></div>
+                    <h3 id="d3Title">Aplicaciones y Sistemas Web</h3>
+                    <p id="d3Desc">Soluciones dinámicas complejas, plataformas SaaS, e-commerce avanzado e integración de sistemas a la medida exacta de tu negocio.</p>
+                </div>
+                <div class="delivery-tag">
+                    <i class="fa-regular fa-clock"></i> <span id="d3Time">Entrega: 15 - 25 Días Hábiles</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section" id="portafolio">
+        <div class="section-title">
+            <h2 id="portTitle">Nuestro Portafolio</h2>
+            <p id="portSub">Algunos de los proyectos destacados que hemos construido</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" alt="Proyecto Finanzas" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">Fintech / Web App</span>
+                    <h3>NovaBank Dashboard</h3>
+                    <p>Interfaz de usuario moderna para la gestión de activos digitales y transferencias en tiempo real.</p>
+                    <a href="#" class="portfolio-link">Ver Caso de Estudio <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=600&auto=format&fit=crop" alt="Proyecto E-Commerce" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">E-Commerce Premium</span>
+                    <h3>Aura Cosméticos</h3>
+                    <p>Tienda online de alta gama con catálogo dinámico, carrito interactivo y pasarela de pago segura.</p>
+                    <a href="#" class="portfolio-link">Ver Caso de Estudio <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop" alt="Proyecto SaaS" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">Landing Page SaaS</span>
+                    <h3>CloudSync AI</h3>
+                    <p>Landing page enfocada en conversión con animaciones avanzadas e integración de formularios.</p>
+                    <a href="#" class="portfolio-link">Ver Caso de Estudio <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section" id="testimonios">
+        <div class="section-title">
+            <h2 id="testTitle">Lo que dicen nuestros clientes</h2>
+            <p id="testSub">La satisfacción de quienes confiaron en PixelGrid</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="testimonial-text">"El equipo de PixelGrid transformó por completo la imagen de nuestra empresa. Nuestra tasa de conversión aumentó un 40% en el primer mes."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MB</div>
+                    <div class="author-info">
+                        <h4>Martín Benítez</h4>
+                        <span>CEO de TechFlow</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="testimonial-text">"Excelente atención, velocidad de entrega impecable y un código super limpio. Altamente recomendados para cualquier proyecto serio."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SL</div>
+                    <div class="author-info">
+                        <h4>Sofia López</h4>
+                        <span>Directora de Marketing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="testimonial-text">"La web a medida que desarrollaron superó nuestras expectativas. La experiencia en dispositivos móviles es extremadamente fluida."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">CR</div>
+                    <div class="author-info">
+                        <h4>Carlos Rodríguez</h4>
+                        <span>Fundador de Nexus</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="section-title">
+            <h2 id="faqTitle">Preguntas Frecuentes</h2>
+            <p id="faqSub">Aclara tus dudas antes de comenzar tu proyecto</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Cuánto tiempo tarda el desarrollo de mi sitio web?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Los tiempos de entrega dependen del paquete seleccionado. Una Landing Page tarda de 5 a 12 días hábiles, mientras que un sitio corporativo requiere entre 10 y 15 días hábiles.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿El sitio web se adaptará a teléfonos celulares?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Sí, absolutamente. Todos nuestros proyectos son 100% responsive y se adaptan perfectamente a computadoras, tablets y smartphones.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Cómo es la modalidad de pago?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Para comenzar a trabajar solicitamos una seña inicial del 50% del costo total. El 50% restante se abona una vez finalizado el proyecto y antes de realizar la entrega final o despliegue oficial de la web.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Qué formas de pago aceptan?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Aceptamos pagos en USD mediante Paypal o transferencia internacional, así como también pesos argentinos (ARS) y reales brasileños (BRL) mediante Mercado Pago o transferencia bancaria local.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section" id="info">
+        <div class="section-title">
+            <h2 id="infoTitle">¿Por qué trabajar con nosotros?</h2>
+            <p id="infoSub">Calidad, compromiso y estándares de nivel internacional</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <h3 id="ic1Title">Máxima Velocidad</h3>
+                <p id="ic1Desc">Optimizamos imágenes, scripts y assets para garantizar tiempos de carga ultrarrápidos.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h3 id="ic2Title">Diseño Responsive</h3>
+                <p id="ic2Desc">Tu sitio lucirá impecable en computadoras, tablets y teléfonos de cualquier resolución.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3 id="ic3Title">Código Seguro</h3>
+                <p id="ic3Desc">Estructuras sólidas siguiendo las mejores prácticas para proteger tu web contra vulnerabilidades.</p>
+            </div>
+        </div>
+
+        <div class="workflow-box">
+            <h3 class="workflow-title" id="wfTitle">Proceso de Trabajo</h3>
+            <div class="workflow-steps">
+                <div class="step-item">
+                    <div class="step-num">01</div>
+                    <h4 id="st1Title">Planificación</h4>
+                    <p id="st1Desc">Definimos objetivos, estructura e identidad de tu proyecto.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">02</div>
+                    <h4 id="st2Title">Diseño UI/UX</h4>
+                    <p id="st2Desc">Creamos la propuesta visual moderna y enfocada en conversión.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">03</div>
+                    <h4 id="st3Title">Desarrollo Web</h4>
+                    <p id="st3Desc">Programamos la estructura con animaciones y código optimizado.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">04</div>
+                    <h4 id="st4Title">Lanzamiento</h4>
+                    <p id="st4Desc">Pruebas finales, optimización e integración en tu dominio público.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-contact" id="nosotros">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2 id="aboutTitle">Impulsamos la presencia digital de marcas exigentes</h2>
+                <p id="aboutDesc">En PixelGrid.web nos especializamos en crear soluciones digitales robustas y atractivas. Combinamos diseño vanguardista con código limpio para construir la identidad web que tu negocio necesita para escalar.</p>
+                <div class="contact-badges">
+                    <a href="https://wa.me/5491137661164" target="_blank" class="contact-badge-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <strong>WhatsApp Directo</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">+54 9 11 3766-1164</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <h3 id="contactTitle">Envíanos un Mensaje</h3>
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label id="lblFormName" for="formName">Nombre Completo</label>
+                        <input type="text" id="formName" class="form-control" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label id="lblFormService" for="formService">Servicio de Interés</label>
+                        <select id="formService" class="form-control" required>
+                            <option value="Básico / Landing Page">Básico / Landing Page ($50 USD)</option>
+                            <option value="Estándar / Web Corporativa">Estándar / Web Corporativa ($80 USD)</option>
+                            <option value="Web a Medida / App">Web a Medida / App ($120 USD)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="lblFormMsg" for="formMsg">Mensaje</label>
+                        <textarea id="formMsg" class="form-control" rows="4" placeholder="Escribe los detalles de tu consulta..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" id="btnFormSubmit">
+                        <i class="fa-brands fa-whatsapp"></i> Enviar a WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="copyright">&copy; 2026 PixelGrid.web. Todos los derechos reservados.</p>
+    </footer>
+
+    <div class="checkout-modal-overlay" id="checkoutModal">
+        <div class="checkout-container">
+            <button class="close-checkout" onclick="closeCheckout()"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="checkout-summary">
+                <div>
+                    <div class="summary-header">
+                        <span class="back-btn" onclick="closeCheckout()"><i class="fa-solid fa-arrow-left"></i> Volver</span>
+                        <h4>Resumen del Pedido</h4>
+                        <div class="summary-price" id="checkoutModalPrice">$25 USD</div>
+                    </div>
+                    <div class="item-details-box">
+                        <div class="item-title">
+                            <span id="checkoutModalPlan">Básico / Landing Page</span>
+                            <span>USD</span>
+                        </div>
+                        <div class="item-desc">Desarrollo web profesional. El monto mostrado corresponde al 50% de seña para iniciar el trabajo.</div>
+                    </div>
+                </div>
+
+                <div class="summary-totals">
+                    <div class="summary-row">
+                        <span>Costo Total del Plan</span>
+                        <span id="checkoutSubtotal">$50.00 USD</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Impuestos / Tasas</span>
+                        <span>$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Seña a pagar hoy (50%)</span>
+                        <span id="checkoutTotal">$25.00 USD</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-form-side">
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Método de Pago Directo</h3>
+                
+                <div class="express-pay">
+                    <button class="btn-express btn-mercadopago" onclick="payWithMP()">
+                        <i class="fa-solid fa-wallet"></i> Mercado Pago
+                    </button>
+                    <button class="btn-express btn-paypal" onclick="payWithPaypal()">
+                        <i class="fa-brands fa-paypal"></i> PayPal
+                    </button>
+                </div>
+
+                <div style="text-align: center; margin: 0.8rem 0; font-size: 0.8rem; color: #9ca3af;">— o coordina tus datos por WhatsApp —</div>
+
+                <div class="checkout-field">
+                    <label>Nombre y Apellido</label>
+                    <input type="text" id="checkoutNameInput" class="checkout-input" placeholder="Ej: Juan Pérez">
+                </div>
+
+                <button class="btn-subscribe" onclick="confirmWhatsappOrder()">
+                    <i class="fa-brands fa-whatsapp"></i> Iniciar Pedido por WhatsApp
+                </button>
+
+                <div class="checkout-disclaimer">
+                    Al hacer clic en cualquiera de los métodos, avanzarás para abonar la seña del 50% e iniciar tu proyecto.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedPlanName = "";
+        let selectedPlanPrice = 0;
+
+        // Toggle del Selector de Idioma
+        function toggleLangDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('customLangDropdown').classList.toggle('open');
+        }
+
+        function selectLanguage(langCode, flag, label) {
+            document.getElementById('currentFlag').innerText = flag;
+            document.getElementById('currentLangText').innerText = label;
+
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.classList.remove('active');
+                if (opt.getAttribute('data-lang') === langCode) {
+                    opt.classList.add('active');
+                }
+            });
+
+            document.getElementById('customLangDropdown').classList.remove('open');
+        }
+
+        document.addEventListener('click', () => {
+            const dropdown = document.getElementById('customLangDropdown');
+            if (dropdown) dropdown.classList.remove('open');
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Menú Móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navCenter = document.getElementById('navCenter');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navCenter.classList.toggle('active');
+            });
+        }
+
+        // Modal Checkout
+        function openCheckout(planName, price) {
+            selectedPlanName = planName;
+            selectedPlanPrice = price;
+
+            const depositPrice = price / 2;
+
+            document.getElementById('checkoutModalPlan').innerText = planName;
+            document.getElementById('checkoutModalPrice').innerText = `$${depositPrice} USD (Seña 50%)`;
+            document.getElementById('checkoutSubtotal').innerText = `$${price}.00 USD`;
+            document.getElementById('checkoutTotal').innerText = `$${depositPrice}.00 USD`;
+
+            document.getElementById('checkoutModal').classList.add('active');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+
+        function confirmWhatsappOrder() {
+            const name = document.getElementById('checkoutNameInput').value || "Cliente";
+            const depositPrice = selectedPlanPrice / 2;
+            const message = `Hola PixelGrid! Mi nombre es ${name}. Me interesa contratar el plan "${selectedPlanName}". Entiendo que el costo total es de $${selectedPlanPrice} USD y deseo abonar la seña del 50% ($${depositPrice} USD) para comenzar el trabajo.`;
+            const whatsappUrl = `https://wa.me/5491137661164?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // INTEGRACIÓN DE PAGOS
+        function payWithMP() {
+            const depositPrice = selectedPlanPrice / 2;
+            
+            // Reemplaza estas URLs con tus Links de Pago de Mercado Pago reales para cada plan (50% de seña)
+            let mpLink = "";
+            if (selectedPlanPrice === 50) {
+                mpLink = "https://mpago.la/2KTzGF8"; 
+            } else if (selectedPlanPrice === 80) {
+                mpLink = "https://mpago.la/28qEt5W";
+            } else if (selectedPlanPrice === 120) {
+                mpLink = "https://mpago.la/2j2jLTs";
+            }
+
+            if (mpLink && !mpLink.includes("tu-link")) {
+                window.open(mpLink, '_blank');
+            } else {
+                // Si aún no configuraste los links, redirige a WhatsApp aclarando el pago por Mercado Pago
+                const name = document.getElementById('checkoutNameInput').value || "Cliente";
+                const message = `Hola PixelGrid! Soy ${name}. Deseo pagar la seña del 50% ($${depositPrice} USD) del plan "${selectedPlanName}" mediante Mercado Pago. ¿Me envían el link de pago o CBU?`;
+                window.open(`https://wa.me/5491137661164?text=${encodeURIComponent(message)}`, '_blank');
+            }
+        }
+
+        function payWithPaypal() {
+            const depositPrice = selectedPlanPrice / 2;
+
+            // Reemplaza estas URLs con tus links de cobro de PayPal.me o PayPal Buttons
+            let paypalLink = "";
+            if (selectedPlanPrice === 50) {
+                paypalLink = "https://paypal.me/tuusuario/25usd";
+            } else if (selectedPlanPrice === 80) {
+                paypalLink = "https://paypal.me/tuusuario/40usd";
+            } else if (selectedPlanPrice === 120) {
+                paypalLink = "https://paypal.me/tuusuario/60usd";
+            }
+
+            if (paypalLink && !paypalLink.includes("tuusuario")) {
+                window.open(paypalLink, '_blank');
+            } else {
+                // Si aún no configuraste los links, redirige a WhatsApp pidiendo la cuenta de PayPal
+                const name = document.getElementById('checkoutNameInput').value || "Cliente";
+                const message = `Hola PixelGrid! Soy ${name}. Deseo pagar la seña del 50% ($${depositPrice} USD) del plan "${selectedPlanName}" mediante PayPal. ¿Me comparten su correo/link de PayPal?`;
+                window.open(`https://wa.me/5491137661164?text=${encodeURIComponent(message)}`, '_blank');
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('formName').value;
+            const service = document.getElementById('formService').value;
+            const msg = document.getElementById('formMsg').value;
+
+            const fullText = `Hola PixelGrid! Mi nombre es ${name}. Me interesa el servicio "${service}". Mensaje: ${msg}`;
+            const whatsappUrl = `https://wa.me/5491137661164?text=${encodeURIComponent(fullText)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Animaciones de entrada con Anime.js
+        document.addEventListener("DOMContentLoaded", () => {
+            anime.timeline({easing: 'easeOutExpo'})
+            .add({
+                targets: '#heroBadge',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 800
+            })
+            .add({
+                targets: '#heroTitle',
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: 900
+            }, '-=600')
+            .add({
+                targets: '#heroDesc',
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: 900
+            }, '-=700')
+            .add({
+                targets: '#heroActions',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 800
+            }, '-=700');
+
+            anime({
+                targets: '.card',
+                opacity: [0, 1],
+                translateY: [40, 0],
+                delay: anime.stagger(150),
+                duration: 800,
+                easing: 'easeOutQuad'
+            });
+        });
+    </script>
+</body>
+</html>
