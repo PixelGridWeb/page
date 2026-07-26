@@ -390,52 +390,50 @@
         }
 
         .card-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 0.4rem;
+            min-height: 2.8rem;
         }
 
         .price {
-            font-size: 2.3rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #fff;
             margin: 1rem 0 0.2rem;
         }
 
         .price span {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             font-weight: 400;
         }
 
-        .deposit-info {
-            color: var(--accent-cyan);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .price-conversions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1rem;
-            margin-bottom: 1.2rem;
-            font-size: 0.85rem;
+        .price-conversion {
+            font-size: 0.82rem;
             color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+        }
+
+        .extra-info-box {
             background: rgba(255, 255, 255, 0.03);
-            padding: 0.6rem 0.9rem;
-            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .price-conversion-item {
+            border-radius: 10px;
+            padding: 0.6rem 0.9rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.83rem;
+            color: var(--text-muted);
             display: flex;
-            align-items: center;
-            gap: 0.35rem;
+            flex-direction: column;
+            gap: 0.3rem;
         }
 
-        .price-conversion-item strong {
+        .extra-info-box strong {
             color: var(--text-main);
-            font-weight: 600;
         }
 
         .btn-pay-main {
@@ -460,77 +458,6 @@
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
         }
 
-        /* --- DETAILED PRODUCT DESCRIPTION SECTION --- */
-        .service-details-section {
-            padding: 5rem 8%;
-            background: rgba(18, 21, 30, 0.4);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .detail-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2.2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .detail-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.08);
-        }
-
-        .detail-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--accent-cyan);
-            padding: 0.35rem 0.9rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            width: fit-content;
-        }
-
-        .detail-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-main);
-        }
-
-        .detail-card p {
-            color: var(--text-muted);
-            font-size: 0.93rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .delivery-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--accent-cyan);
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 0.6rem 1rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
         .features-list {
             list-style: none;
             margin-bottom: 2rem;
@@ -539,15 +466,16 @@
         .features-list li {
             margin-bottom: 0.8rem;
             color: var(--text-muted);
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.6rem;
         }
 
         .features-list li i {
             color: var(--accent-cyan);
             font-size: 0.85rem;
+            margin-top: 0.2rem;
         }
 
         /* --- PORTFOLIO SECTION --- */
@@ -797,52 +725,6 @@
             font-size: 0.92rem;
         }
 
-        /* WORKFLOW STEPS */
-        .workflow-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-        }
-
-        .workflow-title {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            font-size: 1.8rem;
-        }
-
-        .workflow-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .step-item {
-            position: relative;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .step-num {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            font-family: 'Space Grotesk', sans-serif;
-            margin-bottom: 0.5rem;
-        }
-
-        .step-item h4 {
-            font-size: 1.05rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .step-item p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
         /* --- ABOUT & CONTACT SECTION --- */
         .about-contact {
             padding: 6rem 8%;
@@ -1066,7 +948,7 @@
         }
 
         .summary-header .summary-price {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--accent-cyan);
@@ -1122,42 +1004,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-        }
-
-        .express-pay {
-            display: flex;
-            gap: 0.8rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .btn-express {
-            flex: 1;
-            padding: 0.75rem;
-            border-radius: 8px;
-            border: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: opacity 0.2s ease, transform 0.1s ease;
-        }
-
-        .btn-express:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        .btn-mercadopago {
-            background: #009ee3;
-            color: #ffffff;
-        }
-
-        .btn-paypal {
-            background: #003087;
-            color: #ffffff;
         }
 
         .checkout-field {
@@ -1255,7 +1101,7 @@
                 font-size: 1.25rem;
             }
 
-            .pricing, .service-details-section, .portfolio-section, .testimonials-section, .faq-section, .info-section, .about-contact {
+            .pricing, .portfolio-section, .testimonials-section, .faq-section, .info-section, .about-contact {
                 padding: 4rem 5%;
             }
 
@@ -1334,126 +1180,148 @@
         </div>
     </section>
 
+    <!-- SECCIÓN DE PLANES CON PRECIOS EN DÓLARES Y TRADUCCIÓN EN PESOS ARS Y BRL -->
     <section class="pricing" id="servicios">
         <div class="section-title">
-            <h2 id="servicesTitle">Nuestros Servicios Web</h2>
-            <p id="servicesSub">Soluciones a la medida de tu negocio con calidad garantizada</p>
+            <h2 id="servicesTitle">Nuestros Planes de Páginas Web</h2>
+            <p id="servicesSub">Soluciones profesionales adaptadas a las necesidades de tu proyecto</p>
         </div>
 
         <div class="grid-cards">
+            <!-- Plan 1 -->
             <div class="card">
                 <div>
                     <div class="card-header">
-                        <h3 id="p1Title">Básico / Landing Page</h3>
-                        <div class="price">$50 USD <span id="p1Time">/ total</span></div>
-                        <div class="deposit-info">Seña inicial (50%): $25 USD</div>
-                        <div class="price-conversions">
-                            <div class="price-conversion-item">🇦🇷 Seña: <strong>~$37.250 ARS</strong></div>
-                            <div class="price-conversion-item">🇧🇷 Seña: <strong>~R$ 127 BRL</strong></div>
+                        <h3>Landing 1 página</h3>
+                        <div class="price">$150 - $290 <span style="font-size:0.8rem">USD</span></div>
+                        <div class="price-conversion">
+                            🇦🇷 ARS: $180.000 - $350.000<br>
+                            🇧🇷 BRL: R$ 850 - R$ 1.650
+                        </div>
+                        <div class="extra-info-box">
+                            <div>🌐 Dominio + Hosting: <strong>+$50 - $75 USD</strong></div>
+                            <div>⏱️ Entrega: <strong>6 a 8 días</strong></div>
+                            <div>🛠️ Mantenimiento: <strong>$15 - $25 USD /mes</strong></div>
                         </div>
                     </div>
                     <ul class="features-list">
-                        <li><i class="fa-solid fa-check"></i> <span id="p1f1">1 Página Completa (Landing Page)</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p1f2">Diseño Adaptable (Mobile, Tablet & PC)</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p1f3">Botón directo a WhatsApp</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p1f4">Formulario de Contacto</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p1f5">Entrega rápida (3 a 5 días)</span></li>
+                        <li><i class="fa-solid fa-check"></i> Hero + servicios + testimonios + contacto/WhatsApp</li>
+                        <li><i class="fa-solid fa-check"></i> Diseño mobile-first optimizado</li>
+                        <li><i class="fa-solid fa-check"></i> Sin panel de administración</li>
                     </ul>
                 </div>
-                <button class="btn-pay-main" onclick="openCheckout('Básico / Landing Page', 50)">
-                    <i class="fa-solid fa-bolt"></i> Contratar Servicio
+                <button class="btn-pay-main" onclick="openCheckout('Landing 1 página', '$150 - $290 USD')">
+                    <i class="fa-solid fa-bolt"></i> Consultar Plan
                 </button>
             </div>
 
+            <!-- Plan 2 -->
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <h3>Sitio institucional / Landing con catálogo</h3>
+                        <div class="price">$290 - $700 <span style="font-size:0.8rem">USD</span></div>
+                        <div class="price-conversion">
+                            🇦🇷 ARS: $350.000 - $850.000<br>
+                            🇧🇷 BRL: R$ 1.650 - R$ 4.000
+                        </div>
+                        <div class="extra-info-box">
+                            <div>🌐 Dominio + Hosting: <strong>+$65 - $75 USD</strong></div>
+                            <div>⏱️ Entrega: <strong> 1 a 2,5 semanas</strong></div>
+                            <div>🛠️ Mantenimiento: <strong>$20 - $35 USD /mes</strong></div>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Landing + galería/catálogo de productos o servicios (sin carrito)</li>
+                        <li><i class="fa-solid fa-check"></i> Formulario de contacto y WhatsApp Business</li>
+                        <li><i class="fa-solid fa-check"></i> SEO local básico</li>
+                    </ul>
+                </div>
+                <button class="btn-pay-main" onclick="openCheckout('Sitio institucional / Landing con catálogo', '$290 - $700 USD')">
+                    <i class="fa-solid fa-bolt"></i> Consultar Plan
+                </button>
+            </div>
+
+            <!-- Plan 3 (Featured) -->
             <div class="card featured">
                 <div class="featured-badge">Más Popular</div>
                 <div>
                     <div class="card-header">
-                        <h3 id="p2Title">Estándar / Web Corporativa</h3>
-                        <div class="price">$80 USD <span id="p2Time">/ total</span></div>
-                        <div class="deposit-info">Seña inicial (50%): $40 USD</div>
-                        <div class="price-conversions">
-                            <div class="price-conversion-item">🇦🇷 Seña: <strong>~$59.600 ARS</strong></div>
-                            <div class="price-conversion-item">🇧🇷 Seña: <strong>~R$ 204 BRL</strong></div>
+                        <h3>Sitio institucional Pro</h3>
+                        <div class="price">$530 - $900 <span style="font-size:0.8rem">USD</span></div>
+                        <div class="price-conversion">
+                            🇦🇷 ARS: $650.000 - $1.100.000<br>
+                            🇧🇷 BRL: R$ 3.000 - R$ 5.100
+                        </div>
+                        <div class="extra-info-box">
+                            <div>🌐 Dominio + Hosting: <strong>+$75 - $110 USD</strong></div>
+                            <div>⏱️ Entrega: <strong>2 a 3 semanas</strong></div>
+                            <div>🛠️ Mantenimiento: <strong>$30 - $55 USD /mes</strong></div>
                         </div>
                     </div>
                     <ul class="features-list">
-                        <li><i class="fa-solid fa-check"></i> <span id="p2f1">Hasta 5 Páginas / Secciones</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p2f2">Diseño UI/UX Personalizado Premium</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p2f3">Optimización SEO Básica</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p2f4">Integración de Redes Sociales</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p2f5">Animaciones e Interactividad</span></li>
+                        <li><i class="fa-solid fa-check"></i> Todo lo anterior + blog/novedades</li>
+                        <li><i class="fa-solid fa-check"></i> Panel simple para que el dueño suba contenido</li>
+                        <li><i class="fa-solid fa-check"></i> Integración con Google Business, redes y SEO avanzado</li>
                     </ul>
                 </div>
-                <button class="btn-pay-main" onclick="openCheckout('Estándar / Web Corporativa', 80)">
-                    <i class="fa-solid fa-bolt"></i> Contratar Servicio
+                <button class="btn-pay-main" onclick="openCheckout('Sitio institucional Pro', '$530 - $900 USD')">
+                    <i class="fa-solid fa-bolt"></i> Consultar Plan
                 </button>
             </div>
 
+            <!-- Plan 4 -->
             <div class="card">
                 <div>
                     <div class="card-header">
-                        <h3 id="p3Title">Web a Medida / App</h3>
-                        <div class="price">$120 USD <span id="p3Time">/ total</span></div>
-                        <div class="deposit-info">Seña inicial (50%): $60 USD</div>
-                        <div class="price-conversions">
-                            <div class="price-conversion-item">🇦🇷 Seña: <strong>~$89.400 ARS</strong></div>
-                            <div class="price-conversion-item">🇧🇷 Seña: <strong>~R$ 306 BRL</strong></div>
+                        <h3>E-commerce básico</h3>
+                        <div class="price">$740 - $1.480 <span style="font-size:0.8rem">USD</span></div>
+                        <div class="price-conversion">
+                            🇦🇷 ARS: $900.000 - $1.800.000<br>
+                            🇧🇷 BRL: R$ 4.200 - R$ 8.500
+                        </div>
+                        <div class="extra-info-box">
+                            <div>🌐 Dominio + Hosting: <strong>+$75 - $125 USD</strong></div>
+                            <div>⏱️ Entrega: <strong>3 a 4 semanas</strong></div>
+                            <div>🛠️ Mantenimiento: <strong>$50 - $80 USD /mes</strong></div>
                         </div>
                     </div>
                     <ul class="features-list">
-                        <li><i class="fa-solid fa-check"></i> <span id="p3f1">Desarrollo Web o App 100% Personalizado</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p3f2">Integración de Pasarelas de Pago / APIs</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p3f3">Panel de Administración / Base de Datos</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p3f4">Soporte Técnico & Mantenimiento Prioritario</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span id="p3f5">Rendimiento y Seguridad Avanzada</span></li>
+                        <li><i class="fa-solid fa-check"></i> 10 a 50 productos</li>
+                        <li><i class="fa-solid fa-check"></i> Catálogo con carrito y checkout (Mercado Pago / Pasarelas)</li>
+                        <li><i class="fa-solid fa-check"></i> Gestión de stock simple</li>
                     </ul>
                 </div>
-                <button class="btn-pay-main" onclick="openCheckout('Web a Medida / App', 120)">
-                    <i class="fa-solid fa-bolt"></i> Contratar Servicio
+                <button class="btn-pay-main" onclick="openCheckout('E-commerce básico', '$740 - $1.480 USD')">
+                    <i class="fa-solid fa-bolt"></i> Consultar Plan
                 </button>
             </div>
-        </div>
-    </section>
 
-    <section class="service-details-section">
-        <div class="section-title">
-            <h2 id="detailsTitle">Detalles del Servicio</h2>
-            <p id="detailsSub">Descubre qué incluye exactamente cada uno de nuestros paquetes</p>
-        </div>
-
-        <div class="details-grid">
-            <div class="detail-card">
+            <!-- Plan 5 -->
+            <div class="card">
                 <div>
-                    <div class="detail-badge"><i class="fa-solid fa-rocket"></i> <span id="d1Badge">Landing Page</span></div>
-                    <h3 id="d1Title">Página Única de Alta Conversión</h3>
-                    <p id="d1Desc">Ideal para lanzamientos, campañas publicitarias o negocios que necesitan mostrar su propuesta de valor de forma rápida y concisa.</p>
+                    <div class="card-header">
+                        <h3>Portal inmobiliario</h3>
+                        <div class="price">$580 - $1.150 <span style="font-size:0.8rem">USD</span></div>
+                        <div class="price-conversion">
+                            🇦🇷 ARS: $700.000 - $1.400.000<br>
+                            🇧🇷 BRL: R$ 3.300 - R$ 6.600
+                        </div>
+                        <div class="extra-info-box">
+                            <div>🌐 Dominio + Hosting: <strong>+$75 - $110 USD</strong></div>
+                            <div>⏱️ Entrega: <strong>3 a 5 semanas</strong></div>
+                            <div>🛠️ Mantenimiento: <strong>$35 - $65 USD /mes</strong></div>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Buscador y filtros avanzados de propiedades</li>
+                        <li><i class="fa-solid fa-check"></i> Ficha detallada por propiedad y formulario de tasación</li>
+                        <li><i class="fa-solid fa-check"></i> Integración con portales de propiedades</li>
+                    </ul>
                 </div>
-                <div class="delivery-tag">
-                    <i class="fa-regular fa-clock"></i> <span id="d1Time">Entrega: 5 - 12 Días Hábiles</span>
-                </div>
-            </div>
-
-            <div class="detail-card">
-                <div>
-                    <div class="detail-badge"><i class="fa-solid fa-briefcase"></i> <span id="d2Badge">Sitio Corporativo</span></div>
-                    <h3 id="d2Title">Presencia Empresarial Completa</h3>
-                    <p id="d2Desc">Diseñado para PYMEs y profesionales que buscan consolidar su marca con múltiples secciones (Inicio, Nosotros, Servicios, Galería y Contacto).</p>
-                </div>
-                <div class="delivery-tag">
-                    <i class="fa-regular fa-clock"></i> <span id="d2Time">Entrega: 10 - 15 Días Hábiles</span>
-                </div>
-            </div>
-
-            <div class="detail-card">
-                <div>
-                    <div class="detail-badge"><i class="fa-solid fa-code"></i> <span id="d3Badge">Desarrollo Avanzado</span></div>
-                    <h3 id="d3Title">Aplicaciones y Sistemas Web</h3>
-                    <p id="d3Desc">Soluciones dinámicas complejas, plataformas SaaS, e-commerce avanzado e integración de sistemas a la medida exacta de tu negocio.</p>
-                </div>
-                <div class="delivery-tag">
-                    <i class="fa-regular fa-clock"></i> <span id="d3Time">Entrega: 15 - 25 Días Hábiles</span>
-                </div>
+                <button class="btn-pay-main" onclick="openCheckout('Portal inmobiliario', '$580 - $1.150 USD')">
+                    <i class="fa-solid fa-bolt"></i> Consultar Plan
+                </button>
             </div>
         </div>
     </section>
@@ -1561,7 +1429,7 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Los tiempos de entrega dependen del paquete seleccionado. Una Landing Page tarda de 5 a 12 días hábiles, mientras que un sitio corporativo requiere entre 10 y 15 días hábiles.</p>
+                    <p>Los tiempos varían según el plan: desde 3 a 7 días para una Landing Page básica, hasta 3 a 5 semanas para un E-commerce completo.</p>
                 </div>
             </div>
 
@@ -1571,78 +1439,27 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Sí, absolutamente. Todos nuestros proyectos son 100% responsive y se adaptan perfectamente a computadoras, tablets y smartphones.</p>
+                    <p>Sí, absolutamente. Todos nuestros proyectos se desarrollan con enfoque mobile-first y se adaptan perfectamente a computadoras, tablets y smartphones.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">
-                    <span>¿Cómo es la modalidad de pago?</span>
+                    <span>¿Qué incluye el mantenimiento mensual?</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Para comenzar a trabajar solicitamos una seña inicial del 50% del costo total. El 50% restante se abona una vez finalizado el proyecto y antes de realizar la entrega final o despliegue oficial de la web.</p>
+                    <p>Dependiendo del plan contratado, incluye cambios menores en contenidos, respaldos periódicos (backups) y soporte técnico continuo.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">
-                    <span>¿Qué formas de pago aceptan?</span>
+                    <span>¿Incluyen dominio y hosting?</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Aceptamos pagos en USD mediante Paypal o transferencia internacional, así como también pesos argentinos (ARS) y reales brasileños (BRL) mediante Mercado Pago o transferencia bancaria local.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="info-section" id="info">
-        <div class="section-title">
-            <h2 id="infoTitle">¿Por qué trabajar con nosotros?</h2>
-            <p id="infoSub">Calidad, compromiso y estándares de nivel internacional</p>
-        </div>
-
-        <div class="info-grid">
-            <div class="info-card">
-                <div class="info-icon"><i class="fa-solid fa-gauge-high"></i></div>
-                <h3 id="ic1Title">Máxima Velocidad</h3>
-                <p id="ic1Desc">Optimizamos imágenes, scripts y assets para garantizar tiempos de carga ultrarrápidos.</p>
-            </div>
-            <div class="info-card">
-                <div class="info-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                <h3 id="ic2Title">Diseño Responsive</h3>
-                <p id="ic2Desc">Tu sitio lucirá impecable en computadoras, tablets y teléfonos de cualquier resolución.</p>
-            </div>
-            <div class="info-card">
-                <div class="info-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3 id="ic3Title">Código Seguro</h3>
-                <p id="ic3Desc">Estructuras sólidas siguiendo las mejores prácticas para proteger tu web contra vulnerabilidades.</p>
-            </div>
-        </div>
-
-        <div class="workflow-box">
-            <h3 class="workflow-title" id="wfTitle">Proceso de Trabajo</h3>
-            <div class="workflow-steps">
-                <div class="step-item">
-                    <div class="step-num">01</div>
-                    <h4 id="st1Title">Planificación</h4>
-                    <p id="st1Desc">Definimos objetivos, estructura e identidad de tu proyecto.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-num">02</div>
-                    <h4 id="st2Title">Diseño UI/UX</h4>
-                    <p id="st2Desc">Creamos la propuesta visual moderna y enfocada en conversión.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-num">03</div>
-                    <h4 id="st3Title">Desarrollo Web</h4>
-                    <p id="st3Desc">Programamos la estructura con animaciones y código optimizado.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-num">04</div>
-                    <h4 id="st4Title">Lanzamiento</h4>
-                    <p id="st4Desc">Pruebas finales, optimización e integración en tu dominio público.</p>
+                    <p>El costo del dominio y el hosting para el primer año se detalla de forma opcional/adicional en cada uno de nuestros planes.</p>
                 </div>
             </div>
         </div>
@@ -1674,9 +1491,11 @@
                     <div class="form-group">
                         <label id="lblFormService" for="formService">Servicio de Interés</label>
                         <select id="formService" class="form-control" required>
-                            <option value="Básico / Landing Page">Básico / Landing Page ($50 USD)</option>
-                            <option value="Estándar / Web Corporativa">Estándar / Web Corporativa ($80 USD)</option>
-                            <option value="Web a Medida / App">Web a Medida / App ($120 USD)</option>
+                            <option value="Landing 1 página">Landing 1 página ($150 - $290 USD)</option>
+                            <option value="Sitio institucional / Landing con catálogo">Sitio institucional / Landing con catálogo ($290 - $700 USD)</option>
+                            <option value="Sitio institucional Pro">Sitio institucional Pro ($530 - $900 USD)</option>
+                            <option value="E-commerce básico">E-commerce básico ($740 - $1.480 USD)</option>
+                            <option value="Portal inmobiliario">Portal inmobiliario ($580 - $1.150 USD)</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -1703,59 +1522,40 @@
                 <div>
                     <div class="summary-header">
                         <span class="back-btn" onclick="closeCheckout()"><i class="fa-solid fa-arrow-left"></i> Volver</span>
-                        <h4>Resumen del Pedido</h4>
-                        <div class="summary-price" id="checkoutModalPrice">$25 USD</div>
+                        <h4>Resumen del Plan</h4>
+                        <div class="summary-price" id="checkoutModalPrice">$150 - $290 USD</div>
                     </div>
                     <div class="item-details-box">
                         <div class="item-title">
-                            <span id="checkoutModalPlan">Básico / Landing Page</span>
+                            <span id="checkoutModalPlan">Landing 1 página</span>
                             <span>USD</span>
                         </div>
-                        <div class="item-desc">Desarrollo web profesional. El monto mostrado corresponde al 50% de seña para iniciar el trabajo.</div>
+                        <div class="item-desc">Desarrollo web profesional de alto impacto adaptado a tu negocio.</div>
                     </div>
                 </div>
 
                 <div class="summary-totals">
-                    <div class="summary-row">
-                        <span>Costo Total del Plan</span>
-                        <span id="checkoutSubtotal">$50.00 USD</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Impuestos / Tasas</span>
-                        <span>$0.00</span>
-                    </div>
                     <div class="summary-row total">
-                        <span>Seña a pagar hoy (50%)</span>
-                        <span id="checkoutTotal">$25.00 USD</span>
+                        <span>Estado:</span>
+                        <span>Consulta / Cotización Abierta</span>
                     </div>
                 </div>
             </div>
 
             <div class="checkout-form-side">
-                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Método de Pago Directo</h3>
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Iniciar Consulta por WhatsApp</h3>
                 
-                <div class="express-pay">
-                    <button class="btn-express btn-mercadopago" onclick="payWithMP()">
-                        <i class="fa-solid fa-wallet"></i> Mercado Pago
-                    </button>
-                    <button class="btn-express btn-paypal" onclick="payWithPaypal()">
-                        <i class="fa-brands fa-paypal"></i> PayPal
-                    </button>
-                </div>
-
-                <div style="text-align: center; margin: 0.8rem 0; font-size: 0.8rem; color: #9ca3af;">— o coordina tus datos por WhatsApp —</div>
-
                 <div class="checkout-field">
                     <label>Nombre y Apellido</label>
                     <input type="text" id="checkoutNameInput" class="checkout-input" placeholder="Ej: Juan Pérez">
                 </div>
 
                 <button class="btn-subscribe" onclick="confirmWhatsappOrder()">
-                    <i class="fa-brands fa-whatsapp"></i> Iniciar Pedido por WhatsApp
+                    <i class="fa-brands fa-whatsapp"></i> Consultar por este Plan
                 </button>
 
                 <div class="checkout-disclaimer">
-                    Al hacer clic en cualquiera de los métodos, avanzarás para abonar la seña del 50% e iniciar tu proyecto.
+                    Haz clic para coordinar los detalles de tu proyecto y resolver dudas directamente con nuestro equipo técnico.
                 </div>
             </div>
         </div>
@@ -1763,9 +1563,8 @@
 
     <script>
         let selectedPlanName = "";
-        let selectedPlanPrice = 0;
+        let selectedPlanPrice = "";
 
-        // Toggle del Selector de Idioma
         function toggleLangDropdown(event) {
             event.stopPropagation();
             document.getElementById('customLangDropdown').classList.toggle('open');
@@ -1790,7 +1589,6 @@
             if (dropdown) dropdown.classList.remove('open');
         });
 
-        // FAQ Toggle
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
@@ -1798,7 +1596,6 @@
             });
         });
 
-        // Menú Móvil
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navCenter = document.getElementById('navCenter');
 
@@ -1808,18 +1605,12 @@
             });
         }
 
-        // Modal Checkout
         function openCheckout(planName, price) {
             selectedPlanName = planName;
             selectedPlanPrice = price;
 
-            const depositPrice = price / 2;
-
             document.getElementById('checkoutModalPlan').innerText = planName;
-            document.getElementById('checkoutModalPrice').innerText = `$${depositPrice} USD (Seña 50%)`;
-            document.getElementById('checkoutSubtotal').innerText = `$${price}.00 USD`;
-            document.getElementById('checkoutTotal').innerText = `$${depositPrice}.00 USD`;
-
+            document.getElementById('checkoutModalPrice').innerText = price;
             document.getElementById('checkoutModal').classList.add('active');
         }
 
@@ -1829,57 +1620,9 @@
 
         function confirmWhatsappOrder() {
             const name = document.getElementById('checkoutNameInput').value || "Cliente";
-            const depositPrice = selectedPlanPrice / 2;
-            const message = `Hola PixelGrid! Mi nombre es ${name}. Me interesa contratar el plan "${selectedPlanName}". Entiendo que el costo total es de $${selectedPlanPrice} USD y deseo abonar la seña del 50% ($${depositPrice} USD) para comenzar el trabajo.`;
+            const message = `Hola PixelGrid! Mi nombre es ${name}. Me interesa consultar sobre el plan "${selectedPlanName}" (${selectedPlanPrice}). ¿Podemos conversar sobre los detalles?`;
             const whatsappUrl = `https://wa.me/5491137661164?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
-        }
-
-        // INTEGRACIÓN DE PAGOS
-        function payWithMP() {
-            const depositPrice = selectedPlanPrice / 2;
-            
-            // Reemplaza estas URLs con tus Links de Pago de Mercado Pago reales para cada plan (50% de seña)
-            let mpLink = "";
-            if (selectedPlanPrice === 50) {
-                mpLink = "";
-            } else if (selectedPlanPrice === 80) {
-                mpLink = "";
-            } else if (selectedPlanPrice === 120) {
-                mpLink = "";
-            }
-
-            if (mpLink && !mpLink.includes("tu-link")) {
-                window.open(mpLink, '_blank');
-            } else {
-                // Si aún no configuraste los links, redirige a WhatsApp aclarando el pago por Mercado Pago
-                const name = document.getElementById('checkoutNameInput').value || "Cliente";
-                const message = `Hola PixelGrid! Soy ${name}. Deseo pagar la seña del 50% ($${depositPrice} USD) del plan "${selectedPlanName}" mediante Mercado Pago. ¿Me envían el link de pago o CBU?`;
-                window.open(`https://wa.me/5491137661164?text=${encodeURIComponent(message)}`, '_blank');
-            }
-        }
-
-        function payWithPaypal() {
-            const depositPrice = selectedPlanPrice / 2;
-
-            // Reemplaza estas URLs con tus links de cobro de PayPal.me o PayPal Buttons
-            let paypalLink = "";
-            if (selectedPlanPrice === 50) {
-                paypalLink = "https://paypal.me/tuusuario/25usd";
-            } else if (selectedPlanPrice === 80) {
-                paypalLink = "https://paypal.me/tuusuario/40usd";
-            } else if (selectedPlanPrice === 120) {
-                paypalLink = "https://paypal.me/tuusuario/60usd";
-            }
-
-            if (paypalLink && !paypalLink.includes("tuusuario")) {
-                window.open(paypalLink, '_blank');
-            } else {
-                // Si aún no configuraste los links, redirige a WhatsApp pidiendo la cuenta de PayPal
-                const name = document.getElementById('checkoutNameInput').value || "Cliente";
-                const message = `Hola PixelGrid! Soy ${name}. Deseo pagar la seña del 50% ($${depositPrice} USD) del plan "${selectedPlanName}" mediante PayPal. ¿Me comparten su correo/link de PayPal?`;
-                window.open(`https://wa.me/5491137661164?text=${encodeURIComponent(message)}`, '_blank');
-            }
         }
 
         function handleFormSubmit(event) {
@@ -1888,13 +1631,12 @@
             const service = document.getElementById('formService').value;
             const msg = document.getElementById('formMsg').value;
 
-            const fullText = `Hola PixelGrid! Mi nombre es ${name}. Me interesa el servicio "${service}". Mensaje: ${msg}`;
+            const fullText = `Hola PixelGrid! Mi nombre es ${name}. Me interesa el plan "${service}". Mensaje: ${msg}`;
             const whatsappUrl = `https://wa.me/5491137661164?text=${encodeURIComponent(fullText)}`;
             
             window.open(whatsappUrl, '_blank');
         }
 
-        // Animaciones de entrada con Anime.js
         document.addEventListener("DOMContentLoaded", () => {
             anime.timeline({easing: 'easeOutExpo'})
             .add({
